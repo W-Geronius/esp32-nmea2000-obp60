@@ -132,8 +132,10 @@ public:
         getdisplay().print("Time");                          // Name
 
         // Show values sunrise
-        String sunrise = "---";
-        if(valid1 == true && valid2 == true){
+        // if no valid position exists, all hours/minutes are invalid (0)
+        bool valid3 = (commonData.sundata.sunriseHour | commonData.sundata.sunriseMinute | commonData.sundata.sunsetHour | commonData.sundata.sunsetMinute);
+        String sunrise = "--:--";
+        if(valid1 == true && valid2 == true && valid3 == true){
             sunrise = String(commonData.sundata.sunriseHour) + ":" + String(commonData.sundata.sunriseMinute + 100).substring(1);
             svalue3old = sunrise;
         }
@@ -151,8 +153,8 @@ public:
         getdisplay().fillRect(340, 149, 80, 3, pixelcolor);
 
         // Show values sunset
-        String sunset = "---";
-        if(valid1 == true && valid2 == true){
+        String sunset = "--:--";
+        if(valid1 == true && valid2 == true && valid3 == true){
             sunset = String(commonData.sundata.sunsetHour) + ":" +  String(commonData.sundata.sunsetMinute + 100).substring(1);
             svalue4old = sunset;
         }
