@@ -8,8 +8,8 @@ class PageBME280 : public Page
     bool keylock = false;               // Keylock
 
     public:
-    PageBME280(CommonData &comon){
-        comon.logger->logDebug(GwLog::LOG,"Show PageThreeValue");
+    PageBME280(CommonData &common){
+        common.logger->logDebug(GwLog::LOG,"Show PageBME280");
     }
 
     virtual int handleKey(int key){
@@ -49,7 +49,7 @@ class PageBME280 : public Page
             value1 = 23.0 + float(random(0, 10)) / 10.0;
         }
         // Display data when sensor activated
-        if(String(useenvsensor) == "BME280"){
+        if((String(useenvsensor) == "BME280") or (String(useenvsensor) == "BMP280")){
             svalue1 = String(value1, 1);                // Formatted value as string including unit conversion and switching decimal places
         }
         else{
@@ -85,7 +85,7 @@ class PageBME280 : public Page
             value3 = 1006 + float(random(0, 5));
         }
         // Display data when sensor activated
-        if(String(useenvsensor) == "BME280"){
+        if((String(useenvsensor) == "BME280") or (String(useenvsensor) == "BMP280")){
             svalue3 = String(value3, 0);                // Formatted value as string including unit conversion and switching decimal places
         }
         else{
